@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: apachewebserver
+  labels:
+    env: development
+    app: apacheapp
+    tier: frontend
+spec:
+  containers:
+    - name: apachewebserver
+      image: httpd
+  replicas: 3
+        
