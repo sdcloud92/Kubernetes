@@ -21,3 +21,41 @@ spec:
   selector: #This is the main difference between replicationcontroller and replicaset. Selector helps identify what pods fall under it.
     matchLabels: #Matches labels specified under it to labels on the pod.
       type: front-end
+
+  # #You can use it to monitor existing pods
+
+# if you have them already created,
+
+# as it is in this example.
+
+# In case they were not created,
+
+# the Replica Set will create them for you.
+
+# The role of the Replica Set is to monitor the pods
+
+# and if any of them were to fail, deploy new ones.
+
+# The Replica Set is in fact a process that monitors the pods.
+
+# Now, how does the Replica Set know what pods to monitor?
+
+# There could be hundreds of other pods in the cluster
+
+# running different applications.
+
+# This is where labeling our pods
+
+# during creation comes in handy.
+
+# We could now provide these labels
+
+# as a filter for Replica Set.
+
+# Under the selector section, we use the match labels filter
+
+# and provide the same label that we used
+
+# while creating the pods.
+
+# This way, the Replica Set knows which pods to monitor.
