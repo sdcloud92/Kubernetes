@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:  
+  name: myapp-repctr
+  labels:
+    app: myapp-repctr
+    type: front-end
+spec:
+  template: #pod template goes underneath spec. Use pod file from meatadata onwards.
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp-nginx
+        environment: development
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 3 #child of repctrl sepc, sibling of template, specified how many replicas needed here.
+
+
