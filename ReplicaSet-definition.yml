@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    type: front-end
+    environment: test
+spec:
+  template: #pod template goes underneath spec. Use pod file from meatadata onwards.
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp-nginx
+        environment: test
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 3 #child of repctrl sepc, sibling of template, specified how many replicas needed here.
+  selector: #This is the main difference between replicationcontroller and replicaset. Selector helps identify what pods fall under it.
+    matchLabels: #Matches labels specified under it to labels on the pod.
+      type: front-end
